@@ -104,7 +104,7 @@ def collect_result(demo_name, device, pipeline, execution_time, report_file):
 
 
 def write_log(test_log, log_file):
-    with log_file.open('a+', newline='') as txtfile:
+    with log_file.open('a+', newline='', encoding='utf-8') as txtfile:
         txtfile.write(test_log + '\n')
 
 
@@ -335,7 +335,7 @@ def main():
                         if skip: continue
                         test_descr = 'Test case #{}/{}:\n{}'.format(test_case_index, device, ' '.join(shlex.quote(str(arg))
                             for arg in fixed_args + dev_arg + case_args))
-                        print(test_descr)
+                        print(test_descr.encode('utf-8'))
                         print(flush=True)
                         try:
                             start_time = timeit.default_timer()
